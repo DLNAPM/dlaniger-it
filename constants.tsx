@@ -76,16 +76,16 @@ export const APPS: AppData[] = [
   {
     id: 'pmpr-app',
     name: 'PMPR App',
-    tagline: 'Productivity and Management for Professional Results.',
-    description: 'The all-in-one suite for managing your professional profile and project workflows.',
+    tagline: 'Streamline property management with precision and ease.',
+    description: 'The ultimate tool for property managers to handle payment tracking, financial analytics, and maintenance requests.',
     fullDescription: [
-      "PMPR is designed for the modern professional. Manage your digital resume, track freelance projects, and showcase your portfolio in one sleek application.",
-      "Stay organized with integrated task management and client communication features.",
-      "Whether you're a freelancer, consultant, or job seeker, PMPR helps you present your best self to the world."
+      "PMPR App revolutionizes how you manage your real estate assets. It provides a robust platform for end-to-end property oversight, ensuring no detail is overlooked.",
+      "Take control of your cash flow with comprehensive Payment Tracking and Financial Analytics. Visualize income trends, track expenses, and generate detailed financial reports to maximize your portfolio's profitability.",
+      "Simplify the upkeep of your properties with our Maintenance & Repairs module. Efficiently coordinate service requests, track repair progress, and manage vendor costs, all from a single dashboard."
     ],
     url: 'https://pmpr-app.onrender.com/',
     icon: Briefcase,
-    features: ['Portfolio Management', 'Resume Builder', 'Client Tracking', 'Project Analytics'],
+    features: ['Payment Tracking', 'Financial Analytics', 'Maintenance & Repairs', 'Tenant Management'],
     color: 'bg-rose-500',
     imageUrl: 'https://picsum.photos/seed/pmpr/800/600'
   }
