@@ -4,7 +4,11 @@ import {
   Music, 
   CreditCard, 
   Briefcase, 
-  LayoutDashboard 
+  Code2, 
+  Github, 
+  Cloud, 
+  Flame,
+  Zap
 } from 'lucide-react';
 import { AppData } from './types';
 
@@ -88,5 +92,76 @@ export const APPS: AppData[] = [
     features: ['Payment Tracking', 'Financial Analytics', 'Maintenance & Repairs', 'Tenant Management'],
     color: 'bg-rose-500',
     imageUrl: 'https://picsum.photos/seed/pmpr/800/600'
+  }
+];
+
+export const DEPLOYMENT_APPS = [
+  {
+    id: 'google-ai-studio',
+    name: 'Google AI Studio',
+    url: 'https://aistudio.google.com',
+    icon: Zap,
+    color: 'bg-blue-500',
+    details: {
+      purpose: 'Rapid prototyping and experimentation with Google\'s most advanced AI models.',
+      functionality: 'A web-based interface for developers to build, test, and tune prompts for Gemini.',
+      features: [
+        'System Instruction configuration for persona tuning',
+        'Direct API key management for seamless integration',
+        'One-click code export to Python, JavaScript, and cURL',
+        'Granular control over model temperature, Top-K, and Top-P'
+      ]
+    }
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    url: 'https://github.com/',
+    icon: Github,
+    color: 'bg-slate-800',
+    details: {
+      purpose: 'The world\'s leading AI-powered developer platform for version control and collaboration.',
+      functionality: 'Hosts Git repositories, allowing teams to track code changes and manage projects.',
+      features: [
+        'Pull Requests with integrated automated testing',
+        'GitHub Actions for powerful CI/CD automation',
+        'GitHub Pages for simple static site hosting',
+        'Built-in security scanning for dependencies and secrets'
+      ]
+    }
+  },
+  {
+    id: 'render',
+    name: 'Render',
+    url: 'https://dashboard.render.com/',
+    icon: Cloud,
+    color: 'bg-indigo-500',
+    details: {
+      purpose: 'Modern cloud platform for building and running all your apps and websites.',
+      functionality: 'Simplifies deployment of static sites, web services, and background workers.',
+      features: [
+        'Zero-downtime deployments via automatic Git integration',
+        'Managed PostgreSQL and Redis databases',
+        'Free automated SSL certificates',
+        'Auto-scaling based on CPU and memory usage'
+      ]
+    }
+  },
+  {
+    id: 'firebase',
+    name: 'Firebase',
+    url: 'https://console.firebase.google.com/',
+    icon: Flame,
+    color: 'bg-orange-500',
+    details: {
+      purpose: 'Comprehensive app development platform backed by Google.',
+      functionality: 'Provides a complete backend-as-a-service (BaaS) ecosystem.',
+      features: [
+        'Realtime Database and Cloud Firestore for live data',
+        'Secure user authentication with social login support',
+        'Fast and secure web hosting with Global CDN',
+        'Crashlytics and Analytics for app performance monitoring'
+      ]
+    }
   }
 ];

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Rocket, ExternalLink } from 'lucide-react';
+import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { APPS } from '../constants';
 
@@ -39,20 +39,35 @@ const Layout: React.FC = () => {
                 Home
               </NavLink>
               <div className="relative group h-full flex items-center">
-                <button className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-1">
-                  Apps
+                <button className="text-sm font-medium text-slate-600 group-hover:text-brand-600 transition-colors flex items-center gap-1">
+                  Apps <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
                 </button>
                 {/* Dropdown */}
-                <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-lg border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-2">
+                <div className="absolute top-full -left-4 w-72 bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-3">
+                   <div className="mb-2 px-3 py-1">
+                     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Our Suite</p>
+                   </div>
                    {APPS.map((app) => (
                      <NavLink 
                         key={app.id} 
                         to={`/app/${app.id}`}
-                        className="block px-4 py-3 rounded-md hover:bg-slate-50 transition-colors text-sm text-slate-700 hover:text-brand-600"
+                        className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors text-sm text-slate-700 hover:text-brand-600"
                       >
-                        {app.name}
+                        <div className={`w-8 h-8 rounded-lg ${app.color} flex items-center justify-center text-white shrink-0`}>
+                          <app.icon size={16} />
+                        </div>
+                        <span className="font-medium">{app.name}</span>
                       </NavLink>
                    ))}
+                   <div className="mt-3 pt-3 border-t border-slate-100">
+                     <NavLink 
+                        to="/deployment-apps"
+                        className="flex items-center gap-3 px-3 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 transition-colors text-sm text-brand-700"
+                      >
+                        <LayoutGrid size={16} />
+                        <span className="font-bold">Deployment Apps</span>
+                      </NavLink>
+                   </div>
                 </div>
               </div>
               <NavLink 
@@ -80,15 +95,26 @@ const Layout: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-16 px-4 py-4 flex flex-col space-y-4">
+          <div className="md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-16 px-4 py-6 flex flex-col space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <NavLink to="/" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Home</NavLink>
             <div className="border-l-2 border-slate-100 pl-4 space-y-3">
-              <p className="text-xs uppercase text-slate-400 font-semibold tracking-wider">Our Apps</p>
+              <p className="text-xs uppercase text-slate-400 font-semibold tracking-wider">Product Suite</p>
               {APPS.map((app) => (
-                <NavLink key={app.id} to={`/app/${app.id}`} onClick={closeMenu} className="block text-sm text-slate-600 hover:text-brand-600">
+                <NavLink key={app.id} to={`/app/${app.id}`} onClick={closeMenu} className="flex items-center gap-3 text-sm text-slate-600 hover:text-brand-600">
+                  <div className={`w-6 h-6 rounded ${app.color} flex items-center justify-center text-white shrink-0`}>
+                    <app.icon size={12} />
+                  </div>
                   {app.name}
                 </NavLink>
               ))}
+              <NavLink 
+                to="/deployment-apps" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 text-sm font-bold text-brand-600 pt-2"
+              >
+                <LayoutGrid size={14} />
+                Deployment Apps
+              </NavLink>
             </div>
             <NavLink to="/about" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">About</NavLink>
             <NavLink to="/contact" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Contact</NavLink>
@@ -113,7 +139,6 @@ const Layout: React.FC = () => {
               Building the future of productivity and creativity with intelligent, AI-driven solutions for web and mobile.
             </p>
             <div className="flex space-x-4">
-               {/* Social placeholders */}
                <a href="#" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition-colors">
                  <span className="sr-only">Twitter</span>
                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
@@ -130,6 +155,7 @@ const Layout: React.FC = () => {
               {APPS.map(app => (
                 <li key={app.id}><NavLink to={`/app/${app.id}`} className="hover:text-white transition-colors">{app.name}</NavLink></li>
               ))}
+              <li className="pt-2"><NavLink to="/deployment-apps" className="text-brand-500 font-bold hover:text-brand-400">Deployment Tools</NavLink></li>
             </ul>
           </div>
           <div>
