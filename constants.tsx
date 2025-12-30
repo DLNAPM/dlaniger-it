@@ -8,11 +8,28 @@ import {
   Github, 
   Cloud, 
   Flame,
-  Zap
+  Zap,
+  Gift
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'egreetz',
+    name: 'eGreetz',
+    tagline: 'Personalized AI greetings for every occasion.',
+    description: 'Create and send heartwarming, AI-personalized digital greeting cards in seconds.',
+    fullDescription: [
+      "eGreetz is the modern answer to digital connection. Whether it's a birthday, a promotion, or just a 'thinking of you' moment, our AI-powered engine helps you craft the perfect message when words fail you.",
+      "How to use: Simply select your occasion, provide a few key details about the recipient and your relationship, and let our AI generate a selection of unique, emotionally resonant messages and visual themes. You can then fine-tune the content to add your personal touch.",
+      "Once perfected, your eGreet is ready to be shared instantly across the globe via a secure link, ensuring your loved ones feel special no matter where they are."
+    ],
+    url: 'https://egreetz.onrender.com/',
+    icon: Gift,
+    features: ['AI Message Personalization', 'Smart Visual Templates', 'Multi-Channel Delivery', 'Scheduling & Reminders'],
+    color: 'bg-pink-500',
+    imageUrl: 'https://picsum.photos/seed/greet/800/600'
+  },
   {
     id: 'alumni-bookkeeping',
     name: 'Alumni Class Reunion Bookkeeping',
