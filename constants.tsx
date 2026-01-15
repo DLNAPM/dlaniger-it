@@ -9,11 +9,28 @@ import {
   Cloud, 
   Flame,
   Zap,
-  Gift
+  Gift,
+  Video
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'tourgenie',
+    name: 'TourGenie: 90sec App Tour Creator',
+    tagline: 'Cinematic app tours in under 90 seconds.',
+    description: 'Transform your software UI into a high-impact, AI-powered cinematic guided tour.',
+    fullDescription: [
+      "TourGenie is the ultimate marketing tool for developers and product managers. It takes the friction out of creating product demos by using Gemini AI to analyze your application's user interface and generate a professional, 90-second narrative flow.",
+      "How to use: Start by uploading screenshots or a brief screen recording of your app. Define your target audience and the core problem your app solves. TourGenie then synthesizes this data to create a storyboard, a compelling script, and a timed sequence that highlights your best features.",
+      "In just a few clicks, you have a polished video ready for landing pages, social media, or investor pitches. It's like having a professional video production team in your pocket."
+    ],
+    url: 'https://tourgenie-90s-app-tour-creator-761653955507.us-west1.run.app/',
+    icon: Video,
+    features: ['AI Script Synthesis', '90-Second Optimization', 'Cinematic Transitions', 'Voiceover Integration'],
+    color: 'bg-violet-600',
+    imageUrl: 'https://picsum.photos/seed/tour/800/600'
+  },
   {
     id: 'egreetz',
     name: 'eGreetz',
