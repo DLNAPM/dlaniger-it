@@ -134,23 +134,6 @@ export const APPS: AppData[] = [
 
 export const DEPLOYMENT_APPS = [
   {
-    id: 'apple-developer',
-    name: 'Apple Developer',
-    url: 'https://developer.apple.com/',
-    icon: Apple,
-    color: 'bg-slate-900',
-    details: {
-      purpose: 'The official platform for developing and distributing applications within the Apple ecosystem.',
-      functionality: 'Provides tools, documentation, and cloud services required to build apps for iOS, macOS, watchOS, and tvOS.',
-      features: [
-        'App Store Connect for submission and analytics',
-        'TestFlight for seamless beta testing with users',
-        'Access to advanced technologies like iCloud and Apple Pay',
-        'Xcode integration for high-performance native development'
-      ]
-    }
-  },
-  {
     id: 'google-ai-studio',
     name: 'Google AI Studio',
     url: 'https://aistudio.google.com',
@@ -168,36 +151,19 @@ export const DEPLOYMENT_APPS = [
     }
   },
   {
-    id: 'google-play',
-    name: 'Google Play',
-    url: 'https://play.google.com/',
-    icon: Play,
-    color: 'bg-emerald-600',
+    id: 'firebase',
+    name: 'Firebase',
+    url: 'https://console.firebase.google.com/',
+    icon: Flame,
+    color: 'bg-orange-500',
     details: {
-      purpose: 'Global distribution platform for Android applications reaching billions of users.',
-      functionality: 'Provides a secure marketplace for app publishing, version management, and monetization.',
+      purpose: 'Comprehensive app development platform backed by Google.',
+      functionality: 'Provides a complete backend-as-a-service (BaaS) ecosystem.',
       features: [
-        'Google Play Protect for comprehensive user security',
-        'Advanced App Vitals for performance monitoring',
-        'Flexible release tracks for Alpha/Beta testing',
-        'Strategic A/B testing for store listing optimization'
-      ]
-    }
-  },
-  {
-    id: 'web-into-app',
-    name: 'WebIntoApp',
-    url: 'https://www.webintoapp.com/',
-    icon: Smartphone,
-    color: 'bg-orange-600',
-    details: {
-      purpose: 'A specialized tool for converting web applications into professional native mobile apps.',
-      functionality: 'Simplifies mobile development by wrapping URLs into Android (APK) and iOS (IPA) packages.',
-      features: [
-        'Automated build process for multi-platform delivery',
-        'Custom branding for splash screens and app icons',
-        'Integrated push notification support for engagement',
-        'Easy AdMob integration for instant monetization'
+        'Realtime Database and Cloud Firestore for live data',
+        'Secure user authentication with social login support',
+        'Fast and secure web hosting with Global CDN',
+        'Crashlytics and Analytics for app performance monitoring'
       ]
     }
   },
@@ -236,19 +202,53 @@ export const DEPLOYMENT_APPS = [
     }
   },
   {
-    id: 'firebase',
-    name: 'Firebase',
-    url: 'https://console.firebase.google.com/',
-    icon: Flame,
-    color: 'bg-orange-500',
+    id: 'web-into-app',
+    name: 'WebIntoApp',
+    url: 'https://www.webintoapp.com/',
+    icon: Smartphone,
+    color: 'bg-orange-600',
     details: {
-      purpose: 'Comprehensive app development platform backed by Google.',
-      functionality: 'Provides a complete backend-as-a-service (BaaS) ecosystem.',
+      purpose: 'A specialized tool for converting web applications into professional native mobile apps.',
+      functionality: 'Simplifies mobile development by wrapping URLs into Android (APK) and iOS (IPA) packages.',
       features: [
-        'Realtime Database and Cloud Firestore for live data',
-        'Secure user authentication with social login support',
-        'Fast and secure web hosting with Global CDN',
-        'Crashlytics and Analytics for app performance monitoring'
+        'Automated build process for multi-platform delivery',
+        'Custom branding for splash screens and app icons',
+        'Integrated push notification support for engagement',
+        'Easy AdMob integration for instant monetization'
+      ]
+    }
+  },
+  {
+    id: 'google-play',
+    name: 'Google Play',
+    url: 'https://play.google.com/',
+    icon: Play,
+    color: 'bg-emerald-600',
+    details: {
+      purpose: 'Global distribution platform for Android applications reaching billions of users.',
+      functionality: 'Provides a secure marketplace for app publishing, version management, and monetization.',
+      features: [
+        'Google Play Protect for comprehensive user security',
+        'Advanced App Vitals for performance monitoring',
+        'Flexible release tracks for Alpha/Beta testing',
+        'Strategic A/B testing for store listing optimization'
+      ]
+    }
+  },
+  {
+    id: 'apple-developer',
+    name: 'Apple Developer',
+    url: 'https://developer.apple.com/',
+    icon: Apple,
+    color: 'bg-slate-900',
+    details: {
+      purpose: 'The official platform for developing and distributing applications within the Apple ecosystem.',
+      functionality: 'Provides tools, documentation, and cloud services required to build apps for iOS, macOS, watchOS, and tvOS.',
+      features: [
+        'App Store Connect for submission and analytics',
+        'TestFlight for seamless beta testing with users',
+        'Access to advanced technologies like iCloud and Apple Pay',
+        'Xcode integration for high-performance native development'
       ]
     }
   }
