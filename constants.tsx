@@ -10,7 +10,9 @@ import {
   Flame,
   Zap,
   Gift,
-  Video
+  Video,
+  Play,
+  Smartphone
 } from 'lucide-react';
 import { AppData } from './types';
 
@@ -144,6 +146,40 @@ export const DEPLOYMENT_APPS = [
         'Direct API key management for seamless integration',
         'One-click code export to Python, JavaScript, and cURL',
         'Granular control over model temperature, Top-K, and Top-P'
+      ]
+    }
+  },
+  {
+    id: 'google-play',
+    name: 'Google Play',
+    url: 'https://play.google.com/',
+    icon: Play,
+    color: 'bg-emerald-600',
+    details: {
+      purpose: 'Global distribution platform for Android applications reaching billions of users.',
+      functionality: 'Provides a secure marketplace for app publishing, version management, and monetization.',
+      features: [
+        'Google Play Protect for comprehensive user security',
+        'Advanced App Vitals for performance monitoring',
+        'Flexible release tracks for Alpha/Beta testing',
+        'Strategic A/B testing for store listing optimization'
+      ]
+    }
+  },
+  {
+    id: 'web-into-app',
+    name: 'WebIntoApp',
+    url: 'https://www.webintoapp.com/',
+    icon: Smartphone,
+    color: 'bg-orange-600',
+    details: {
+      purpose: 'A specialized tool for converting web applications into professional native mobile apps.',
+      functionality: 'Simplifies mobile development by wrapping URLs into Android (APK) and iOS (IPA) packages.',
+      features: [
+        'Automated build process for multi-platform delivery',
+        'Custom branding for splash screens and app icons',
+        'Integrated push notification support for engagement',
+        'Easy AdMob integration for instant monetization'
       ]
     }
   },
