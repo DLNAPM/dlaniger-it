@@ -7,12 +7,13 @@ import {
   Code2, 
   Github, 
   Cloud, 
-  Flame,
-  Zap,
-  Gift,
-  Video,
-  Play,
-  Smartphone
+  Flame, 
+  Zap, 
+  Gift, 
+  Video, 
+  Play, 
+  Smartphone,
+  Apple
 } from 'lucide-react';
 import { AppData } from './types';
 
@@ -132,6 +133,23 @@ export const APPS: AppData[] = [
 ];
 
 export const DEPLOYMENT_APPS = [
+  {
+    id: 'apple-developer',
+    name: 'Apple Developer',
+    url: 'https://developer.apple.com/',
+    icon: Apple,
+    color: 'bg-slate-900',
+    details: {
+      purpose: 'The official platform for developing and distributing applications within the Apple ecosystem.',
+      functionality: 'Provides tools, documentation, and cloud services required to build apps for iOS, macOS, watchOS, and tvOS.',
+      features: [
+        'App Store Connect for submission and analytics',
+        'TestFlight for seamless beta testing with users',
+        'Access to advanced technologies like iCloud and Apple Pay',
+        'Xcode integration for high-performance native development'
+      ]
+    }
+  },
   {
     id: 'google-ai-studio',
     name: 'Google AI Studio',
