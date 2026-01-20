@@ -219,14 +219,14 @@ export const DEPLOYMENT_APPS = [
     }
   },
   {
-    id: 'google-play',
-    name: 'Google Play',
-    url: 'https://play.google.com/',
+    id: 'google-play-console',
+    name: 'Google Play Console',
+    url: 'https://play.google.com/console/developers',
     icon: Play,
     color: 'bg-emerald-600',
     details: {
-      purpose: 'Global distribution platform for Android applications reaching billions of users.',
-      functionality: 'Provides a secure marketplace for app publishing, version management, and monetization.',
+      purpose: 'Official management platform for Android developers to publish and track app performance.',
+      functionality: 'Provides a robust suite of tools for app release management, testing, and distribution.',
       features: [
         'Google Play Protect for comprehensive user security',
         'Advanced App Vitals for performance monitoring',
