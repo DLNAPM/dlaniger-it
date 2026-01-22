@@ -13,11 +13,28 @@ import {
   Video, 
   Play, 
   Smartphone,
-  Apple
+  Apple,
+  Image
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'pixelperfect-pro',
+    name: 'PixelPerfect Pro',
+    tagline: 'Upscale, enhance, and transform images with surgical precision.',
+    description: 'An advanced AI-powered image processing suite for designers, photographers, and content creators.',
+    fullDescription: [
+      "PixelPerfect Pro is our flagship image enhancement tool, utilizing state-of-the-art neural networks to reconstruct missing detail in low-resolution photos. Whether you are restoring archival family photos or preparing digital assets for large-scale printing, PixelPerfect Pro delivers results that were previously considered impossible.",
+      "How to use: Begin by dragging and dropping your source image into the workspace. Select your desired processing mode—AI Upscale for resolution, Neural Denoise for low-light shots, or Smart Lighting for exposure correction. Use the split-view comparison tool to preview the enhancements in real-time.",
+      "Once you are satisfied with the result, export your enhanced image in professional formats like PNG or high-fidelity WebP. Our batch processing engine also allows you to apply your favorite enhancement profiles to entire albums simultaneously, saving hours of manual editing."
+    ],
+    url: 'https://pixelperfect-pro-761653955507.us-west1.run.app/',
+    icon: Image,
+    features: ['4K AI Neural Upscaling', 'Neural Denoising & Deblurring', 'Intelligent Color Reconstruction', 'One-Click Object Removal'],
+    color: 'bg-cyan-600',
+    imageUrl: 'https://picsum.photos/seed/pixel/800/600'
+  },
   {
     id: 'tourgenie',
     name: 'TourGenie: 90sec App Tour Creator',
