@@ -14,11 +14,28 @@ import {
   Play, 
   Smartphone,
   Apple,
-  Image
+  Image,
+  Car
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'my-mileages',
+    name: 'My MileAges',
+    tagline: 'Precision mileage tracking for professionals.',
+    description: 'Effortlessly track, categorize, and report your vehicle mileage for taxes and reimbursement.',
+    fullDescription: [
+      "My MileAges is the essential tool for gig economy workers, sales representatives, and small business owners. It removes the guesswork from mileage deduction by providing precise, map-based distance calculations and organizing your travel history.",
+      "How to use: Simply enter your start and end points to instantly generate accurate trip data. Assign trips to specific categories like Business, Charity, or Medical, and link them to clients or projects for detailed cost allocation.",
+      "Stop leaving money on the table during tax season. My MileAges helps you generate IRS-compliant reports in seconds, ensuring you maximize your deductions and streamline your reimbursement process."
+    ],
+    url: 'https://my-mileages-app.onrender.com/',
+    icon: Car,
+    features: ['Smart Route Estimation', 'One-Tap Categorization', 'Tax-Ready Exports', 'Client Allocation'],
+    color: 'bg-amber-600',
+    imageUrl: 'https://picsum.photos/seed/mileages/800/600'
+  },
   {
     id: 'pixelperfect-pro',
     name: 'PixelPerfect Pro',
