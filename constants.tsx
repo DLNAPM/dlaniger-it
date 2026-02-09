@@ -15,11 +15,28 @@ import {
   Smartphone,
   Apple,
   Image,
-  Car
+  Car,
+  Award
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'certificate-makers',
+    name: 'Certificate Makers',
+    tagline: 'Professional recognition, automated.',
+    description: 'Create, customize, and bulk-generate stunning certificates for any occasion in minutes.',
+    fullDescription: [
+      "Certificate Makers is the ultimate solution for educators, event organizers, and HR professionals. Say goodbye to manual mail merges and design struggles. Our platform allows you to produce hundreds of high-quality, personalized certificates with minimal effort.",
+      "How to use: Choose from our library of AI-enhanced professional templates or upload your own design. Simply import your recipient list via CSV, map the fields (like Name, Date, Award Title), and preview your batch.",
+      "With a single click, generate PDF or image files ready for printing or digital distribution. We ensure every certificate looks pixel-perfect and conveys the prestige your recipients deserve."
+    ],
+    url: 'https://certificate-makers.onrender.com/',
+    icon: Award,
+    features: ['Bulk CSV Processing', 'Customizable Templates', 'High-Res PDF Export', 'Instant Preview'],
+    color: 'bg-teal-600',
+    imageUrl: 'https://picsum.photos/seed/certificate/800/600'
+  },
   {
     id: 'my-mileages',
     name: 'My MileAges',
