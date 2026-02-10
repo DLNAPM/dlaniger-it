@@ -11,11 +11,24 @@ import {
   ShieldAlert,
   Download,
   Search,
-  LayoutGrid
+  LayoutGrid,
+  MousePointerClick,
+  UserCheck,
+  UserX
 } from 'lucide-react';
 import { APPS } from '../constants';
 
 type TimeRange = 'day' | 'week' | 'month' | 'quarter' | 'halfYear' | 'custom';
+
+interface UserStat {
+  username: string;
+  count: number;
+}
+
+interface FeatureStat {
+  name: string;
+  count: number;
+}
 
 interface AppMetrics {
   appId: string;
@@ -24,9 +37,19 @@ interface AppMetrics {
   successfulLogins: number;
   failedLogins: number;
   regions: { name: string; count: number }[];
+  topFeatures: FeatureStat[];
+  topSuccessfulUsers: UserStat[];
+  topFailedUsers: UserStat[];
 }
 
 const REGIONS = ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Middle East', 'Africa'];
+
+// Helper to generate mock users
+const MOCK_USERS = [
+  'alex.dev@tech.com', 'sarah.m@design.co', 'john.doe@gmail.com', 
+  'admin@corp.net', 'finance.lead@biz.org', 'mike.runner@gig.io', 
+  'lisa.p@school.edu', 'guest_882', 'robert.k@law.firm', 'emily.w@studio.art'
+];
 
 const AdminDashboard: React.FC = () => {
   const [timeRange, setTimeRange] = useState<TimeRange>('week');
@@ -67,13 +90,39 @@ const AdminDashboard: React.FC = () => {
         count: Math.floor(successfulLogins * (Math.random() * 0.4))
       })).sort((a, b) => b.count - a.count);
 
+      // Generate Top Features (Most Clicked)
+      const features = (app.features || ['Dashboard', 'Settings', 'Profile', 'Reports']).map(feat => ({
+        name: feat,
+        count: Math.floor(accessCount * (0.2 + Math.random() * 0.5)) // Random click distribution
+      })).sort((a, b) => b.count - a.count);
+
+      // Generate Top Successful Users
+      const successfulUsers = MOCK_USERS.map(user => ({
+        username: user,
+        count: Math.floor(multiplier * (1 + Math.random() * 20))
+      }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 5);
+
+      // Generate Top Failed Users
+      const failedUsers = MOCK_USERS.map(user => ({
+        username: user,
+        count: Math.floor(multiplier * (Math.random() * 5))
+      }))
+      .filter(u => u.count > 0)
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 5);
+
       return {
         appId: app.id,
         appName: app.name,
         accessCount,
         successfulLogins,
         failedLogins,
-        regions: appRegions
+        regions: appRegions,
+        topFeatures: features,
+        topSuccessfulUsers: successfulUsers,
+        topFailedUsers: failedUsers
       };
     });
   }, [timeRange, startDate, endDate, selectedAppId]); // Recalculate when filters change
@@ -356,6 +405,104 @@ const AdminDashboard: React.FC = () => {
           </div>
 
         </div>
+
+        {/* New Section: Feature Usage & User Insights */}
+        <div>
+          <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+             <MousePointerClick className="text-purple-600" />
+             Feature Engagement & User Insights
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+             {metrics.map(app => (
+               <div key={app.appId} className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
+                  {/* Card Header */}
+                  <div className="bg-slate-50 px-6 py-4 border-b border-slate-100">
+                    <h3 className="font-bold text-slate-800 truncate">{app.appName}</h3>
+                  </div>
+                  
+                  <div className="p-6 space-y-6 flex-grow">
+                    {/* Most Clicked Feature */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                         <MousePointerClick size={14} className="text-purple-500" />
+                         <span className="text-xs font-bold uppercase text-slate-400">Most Clicked Feature</span>
+                      </div>
+                      {app.topFeatures.length > 0 ? (
+                        <div className="bg-purple-50 rounded-lg p-3 border border-purple-100 flex justify-between items-center">
+                           <span className="font-semibold text-purple-900">{app.topFeatures[0].name}</span>
+                           <span className="text-xs font-mono bg-white px-2 py-1 rounded text-purple-700">{app.topFeatures[0].count.toLocaleString()} clicks</span>
+                        </div>
+                      ) : (
+                        <div className="text-sm text-slate-400 italic">No feature data available</div>
+                      )}
+                      
+                      {/* Show extra features only if single app selected */}
+                      {selectedAppId !== 'all' && app.topFeatures.length > 1 && (
+                        <div className="mt-3 space-y-2">
+                           {app.topFeatures.slice(1, 5).map((feat, idx) => (
+                             <div key={idx} className="flex justify-between items-center text-sm">
+                                <span className="text-slate-600">{feat.name}</span>
+                                <span className="text-slate-400 text-xs">{feat.count.toLocaleString()}</span>
+                             </div>
+                           ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="border-t border-slate-100 my-4"></div>
+
+                    {/* Top Users Grid */}
+                    <div className="grid grid-cols-2 gap-4">
+                       {/* Successful Users */}
+                       <div>
+                          <div className="flex items-center gap-1 mb-3">
+                             <UserCheck size={14} className="text-green-600" />
+                             <span className="text-[10px] font-bold uppercase text-slate-400">Top Active Users</span>
+                          </div>
+                          <ul className="space-y-2">
+                             {app.topSuccessfulUsers.length > 0 ? (
+                               app.topSuccessfulUsers.map((user, idx) => (
+                                 <li key={idx} className="flex justify-between items-center text-xs">
+                                   <span className="truncate text-slate-600 max-w-[80px]" title={user.username}>{user.username.split('@')[0]}</span>
+                                   <span className="font-mono text-green-600 bg-green-50 px-1.5 rounded">{user.count}</span>
+                                 </li>
+                               ))
+                             ) : (
+                               <li className="text-xs text-slate-400">No active users</li>
+                             )}
+                          </ul>
+                       </div>
+
+                       {/* Failed Users */}
+                       <div>
+                          <div className="flex items-center gap-1 mb-3">
+                             <UserX size={14} className="text-red-600" />
+                             <span className="text-[10px] font-bold uppercase text-slate-400">Login Failures</span>
+                          </div>
+                          <ul className="space-y-2">
+                             {app.topFailedUsers.length > 0 ? (
+                               app.topFailedUsers.map((user, idx) => (
+                                 <li key={idx} className="flex justify-between items-center text-xs">
+                                   <span className="truncate text-slate-600 max-w-[80px]" title={user.username}>{user.username.split('@')[0]}</span>
+                                   <span className="font-mono text-red-600 bg-red-50 px-1.5 rounded">{user.count}</span>
+                                 </li>
+                               ))
+                             ) : (
+                               <li className="text-xs text-slate-400">No failures recorded</li>
+                             )}
+                          </ul>
+                       </div>
+                    </div>
+                  </div>
+               </div>
+             ))}
+             {metrics.length === 0 && (
+                <div className="col-span-full text-center py-10 text-slate-400">No data available</div>
+             )}
+          </div>
+        </div>
+
       </div>
     </div>
   );
