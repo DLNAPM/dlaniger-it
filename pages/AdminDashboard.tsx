@@ -10,7 +10,8 @@ import {
   XCircle,
   ShieldAlert,
   Download,
-  Search
+  Search,
+  LayoutGrid
 } from 'lucide-react';
 import { APPS } from '../constants';
 
@@ -31,8 +32,9 @@ const AdminDashboard: React.FC = () => {
   const [timeRange, setTimeRange] = useState<TimeRange>('week');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [selectedAppId, setSelectedAppId] = useState<string>('all');
 
-  // Mock Data Generation based on Time Range
+  // Mock Data Generation based on Time Range and App Selection
   const metrics = useMemo(() => {
     // Multiplier for mock data based on duration
     let multiplier = 1;
@@ -45,7 +47,12 @@ const AdminDashboard: React.FC = () => {
       case 'custom': multiplier = 15; break; // Default average
     }
 
-    return APPS.map(app => {
+    // Filter apps first based on selection
+    const appsToProcess = selectedAppId === 'all' 
+      ? APPS 
+      : APPS.filter(app => app.id === selectedAppId);
+
+    return appsToProcess.map(app => {
       // Deterministic pseudo-random based on name length for consistency during re-renders if needed
       const baseAccess = (app.name.length * 15) + 50; 
       const accessCount = Math.floor(baseAccess * multiplier * (0.8 + Math.random() * 0.4));
@@ -69,19 +76,18 @@ const AdminDashboard: React.FC = () => {
         regions: appRegions
       };
     });
-  }, [timeRange, startDate, endDate]); // Recalculate when filters change
+  }, [timeRange, startDate, endDate, selectedAppId]); // Recalculate when filters change
 
-  // Top 5 Most Accessed
+  // Top Apps Logic (If single app selected, it will just show 1)
   const topApps = [...metrics].sort((a, b) => b.accessCount - a.accessCount).slice(0, 5);
-
-  const maxAccess = Math.max(...topApps.map(a => a.accessCount));
+  const maxAccess = Math.max(...topApps.map(a => a.accessCount)) || 1;
 
   return (
     <div className="bg-slate-50 min-h-screen pb-20">
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
             <div>
               <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
                 <ShieldAlert className="text-brand-600" />
@@ -92,47 +98,75 @@ const AdminDashboard: React.FC = () => {
               </p>
             </div>
             
-            {/* Time Controls */}
-            <div className="flex flex-col sm:flex-row items-center gap-2 bg-slate-100 p-1.5 rounded-lg border border-slate-200">
-              {(['day', 'week', 'month', 'quarter', 'halfYear', 'custom'] as const).map((range) => (
-                <button
-                  key={range}
-                  onClick={() => setTimeRange(range)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all w-full sm:w-auto capitalize ${
-                    timeRange === range 
-                      ? 'bg-white text-brand-700 shadow-sm border border-slate-200' 
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-                  }`}
+            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+              {/* App Filter Dropdown */}
+              <div className="relative group min-w-[200px] w-full md:w-auto">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <LayoutGrid size={16} />
+                </div>
+                <select
+                  value={selectedAppId}
+                  onChange={(e) => setSelectedAppId(e.target.value)}
+                  className="w-full pl-10 pr-8 py-2 bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none appearance-none cursor-pointer hover:bg-slate-100 transition-colors"
                 >
-                  {range === 'halfYear' ? '6 Months' : range === 'quarter' ? '90 Days' : range}
-                </button>
-              ))}
+                  <option value="all">All Applications</option>
+                  <optgroup label="Product Suite">
+                    {APPS.map(app => (
+                      <option key={app.id} value={app.id}>{app.name}</option>
+                    ))}
+                  </optgroup>
+                </select>
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                  <Filter size={12} />
+                </div>
+              </div>
+
+              {/* Time Controls */}
+              <div className="flex flex-wrap items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 w-full md:w-auto">
+                {(['day', 'week', 'month', 'quarter', 'halfYear', 'custom'] as const).map((range) => (
+                  <button
+                    key={range}
+                    onClick={() => setTimeRange(range)}
+                    className={`flex-1 md:flex-none px-3 py-1.5 text-xs font-medium rounded-md transition-all capitalize whitespace-nowrap ${
+                      timeRange === range 
+                        ? 'bg-white text-brand-700 shadow-sm border border-slate-200' 
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+                    }`}
+                  >
+                    {range === 'halfYear' ? '6 Months' : range === 'quarter' ? '90 Days' : range}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Custom Date Inputs */}
           {timeRange === 'custom' && (
-            <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200 flex items-center gap-4 animate-fade-in">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-bold text-slate-500 uppercase">Start Date</label>
+            <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col sm:flex-row items-end sm:items-center gap-4 animate-fade-in">
+              <div className="flex flex-col gap-1 w-full sm:w-auto">
+                <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1">
+                  <Calendar size={12} /> Start Date
+                </label>
                 <input 
                   type="date" 
-                  className="px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-brand-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-brand-500 outline-none"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
                 />
               </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-bold text-slate-500 uppercase">End Date</label>
+              <div className="flex flex-col gap-1 w-full sm:w-auto">
+                <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1">
+                  <Calendar size={12} /> End Date
+                </label>
                 <input 
                   type="date" 
-                  className="px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-brand-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-brand-500 outline-none"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
                 />
               </div>
-              <button className="mt-auto px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 transition-colors">
-                Apply Range
+              <button className="w-full sm:w-auto mt-auto px-6 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 transition-colors shadow-sm">
+                Apply Filter
               </button>
             </div>
           )}
@@ -145,7 +179,9 @@ const AdminDashboard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-slate-500 font-medium text-sm">Total App Access</h3>
+                <h3 className="text-slate-500 font-medium text-sm">
+                  {selectedAppId === 'all' ? 'Total App Access' : 'App Access'}
+                </h3>
                 <div className="p-2 bg-blue-50 text-brand-600 rounded-lg"><BarChart3 size={20}/></div>
              </div>
              <p className="text-3xl font-bold text-slate-900">
@@ -188,36 +224,42 @@ const AdminDashboard: React.FC = () => {
           <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
               <Users size={18} className="text-brand-600" />
-              Top 5 Most Accessed Apps
+              {selectedAppId === 'all' ? 'Top 5 Most Accessed Apps' : 'App Traffic Overview'}
             </h2>
-            <span className="text-xs font-medium px-2 py-1 bg-slate-100 rounded text-slate-500 capitalize">
-              {timeRange} View
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-medium px-2 py-1 bg-slate-100 rounded text-slate-500 capitalize">
+                {timeRange === 'halfYear' ? '6 Months' : timeRange}
+              </span>
+            </div>
           </div>
           <div className="p-6">
-            <div className="space-y-6">
-              {topApps.map((app, index) => (
-                <div key={app.appId} className="group">
-                  <div className="flex justify-between text-sm mb-1.5">
-                    <span className="font-semibold text-slate-700 flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-[10px] font-bold">
-                        {index + 1}
+            {topApps.length > 0 ? (
+              <div className="space-y-6">
+                {topApps.map((app, index) => (
+                  <div key={app.appId} className="group">
+                    <div className="flex justify-between text-sm mb-1.5">
+                      <span className="font-semibold text-slate-700 flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-[10px] font-bold">
+                          {selectedAppId === 'all' ? index + 1 : '-'}
+                        </span>
+                        {app.appName}
                       </span>
-                      {app.appName}
-                    </span>
-                    <span className="font-mono text-slate-600">{app.accessCount.toLocaleString()} visits</span>
-                  </div>
-                  <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                    <div 
-                      className="bg-brand-600 h-3 rounded-full transition-all duration-1000 ease-out group-hover:bg-brand-500 relative overflow-hidden"
-                      style={{ width: `${(app.accessCount / maxAccess) * 100}%` }}
-                    >
-                      <div className="absolute inset-0 bg-white/20 animate-[shimmer_2s_infinite]"></div>
+                      <span className="font-mono text-slate-600">{app.accessCount.toLocaleString()} visits</span>
+                    </div>
+                    <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                      <div 
+                        className="bg-brand-600 h-3 rounded-full transition-all duration-1000 ease-out group-hover:bg-brand-500 relative overflow-hidden"
+                        style={{ width: `${(app.accessCount / maxAccess) * 100}%` }}
+                      >
+                        <div className="absolute inset-0 bg-white/20 animate-[shimmer_2s_infinite]"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-10 text-slate-400">No data available for the selected criteria.</div>
+            )}
           </div>
         </div>
 
@@ -268,6 +310,9 @@ const AdminDashboard: React.FC = () => {
                       </tr>
                     );
                   })}
+                  {metrics.length === 0 && (
+                     <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-400">No data found</td></tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -304,6 +349,9 @@ const AdminDashboard: React.FC = () => {
                   </div>
                 </div>
               ))}
+              {metrics.length === 0 && (
+                <div className="text-center text-slate-400 mt-10">No geographic data available</div>
+              )}
             </div>
           </div>
 
