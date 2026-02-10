@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid } from 'lucide-react';
+import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid, ShieldCheck } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { APPS } from '../constants';
 
@@ -82,6 +82,13 @@ const Layout: React.FC = () => {
               >
                 Contact
               </NavLink>
+              <NavLink 
+                to="/admin" 
+                className={({ isActive }) => `text-sm font-medium hover:text-brand-600 transition-colors flex items-center gap-1 ${isActive ? 'text-brand-600' : 'text-slate-600'}`}
+              >
+                <ShieldCheck size={16} />
+                Admin
+              </NavLink>
             </div>
 
             {/* Mobile Menu Button */}
@@ -118,6 +125,10 @@ const Layout: React.FC = () => {
             </div>
             <NavLink to="/about" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">About</NavLink>
             <NavLink to="/contact" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Contact</NavLink>
+            <NavLink to="/admin" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2 flex items-center gap-2">
+              <ShieldCheck size={16} />
+              Admin Dashboard
+            </NavLink>
           </div>
         )}
       </nav>
@@ -163,7 +174,7 @@ const Layout: React.FC = () => {
             <ul className="space-y-2 text-sm">
               <li><NavLink to="/about" className="hover:text-white transition-colors">About Us</NavLink></li>
               <li><NavLink to="/contact" className="hover:text-white transition-colors">Contact</NavLink></li>
-              <li><span className="text-slate-600 cursor-not-allowed">Careers (Soon)</span></li>
+              <li><NavLink to="/admin" className="hover:text-white transition-colors">Admin Portal</NavLink></li>
             </ul>
           </div>
         </div>

@@ -6,6 +6,7 @@ import AppDetail from './pages/AppDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import DeploymentApps from './pages/DeploymentApps';
+import AdminDashboard from './pages/AdminDashboard';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route path="deployment-apps" element={<DeploymentApps />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="admin" element={<AdminDashboard />} />
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
