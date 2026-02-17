@@ -16,7 +16,8 @@ import {
   Apple,
   Image,
   Car,
-  Award
+  Award,
+  Headphones
 } from 'lucide-react';
 import { AppData } from './types';
 
@@ -100,6 +101,22 @@ export const APPS: AppData[] = [
     features: ['AI Message Personalization', 'Smart Visual Templates', 'Multi-Channel Delivery', 'Scheduling & Reminders'],
     color: 'bg-pink-500',
     imageUrl: 'https://picsum.photos/seed/greet/800/600'
+  },
+  {
+    id: 'audibites',
+    name: 'AudiBites',
+    tagline: 'Consume content faster with AI-powered audio summaries.',
+    description: 'Instantly convert web articles, documents, and reports into bite-sized, AI-narrated audio summaries.',
+    fullDescription: [
+      "AudiBites is designed for knowledge seekers who are short on time. It leverages Generative AI to analyze text content—whether it's a blog post, a research paper, or a news article—and converts it into a succinct, spoken summary.",
+      "How to use: Simply paste a URL or text block into the AudiBites dashboard. Customize your experience by choosing the summary length (Brief, Standard, Detailed) and selecting from a variety of lifelike AI voices that suit your listening preference.",
+      "Listen directly in the browser or download the MP3 file to take with you. It's the perfect way to turn your daily commute, gym session, or coffee break into a productive learning opportunity."
+    ],
+    url: 'https://audibites.onrender.com',
+    icon: Headphones,
+    features: ['Instant Audio Summarization', 'Natural Neural Voices', 'Personalized Playlists', 'Offline MP3 Downloads'],
+    color: 'bg-orange-500',
+    imageUrl: 'https://picsum.photos/seed/audibites/800/600'
   },
   {
     id: 'alumni-bookkeeping',
