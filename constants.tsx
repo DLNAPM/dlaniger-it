@@ -202,16 +202,16 @@ export const APPS: AppData[] = [
   {
     id: 're-image2vidz',
     name: 'R.E.-Image2Vidz',
-    tagline: 'Transform property listings into cinematic video tours instantly.',
-    description: 'Automatically generate engaging video walkthroughs from your real estate listing photos using AI.',
+    tagline: 'Find existing video tours for any property instantly.',
+    description: 'Locate existing video content for properties by combining address data, MLS numbers, and AI visual recognition.',
     fullDescription: [
-      "R.E.-Image2Vidz is the ultimate marketing companion for Real Estate Agents and Property Managers. In a market where video content drives engagement, this tool effortlessly converts static property images into dynamic, professional-grade video tours.",
-      "How to use: Simply upload your high-quality listing photos (interior, exterior, amenities). Our AI analyzes the room types and spatial flow to arrange them logically. Select a mood (e.g., 'Modern Luxury', 'Cozy Family', 'Upbeat Open House') to auto-select background music and transition styles.",
-      "Within moments, download a polished MP4 video ready for Instagram Reels, TikTok, or Zillow. Enhance your listings and capture more leads without expensive video production teams."
+      "R.E.-Image2Vidz is a powerful discovery tool for Real Estate professionals. Instead of creating new content from scratch, it helps you leverage existing digital assets. By combining address data, MLS numbers, and visual recognition from uploaded photos, it scours the web for matching video tours on platforms like YouTube, Vimeo, and agency sites.",
+      "How to use: Enter the property address or MLS number, or simply upload a photo of the property facade. Our AI-driven search engine analyzes the visual fingerprints and metadata to locate video content across the internet.",
+      "Save hours of manual searching. Instantly access a curated list of video links that you can embed in your listings, share with clients, or use for market research."
     ],
     url: 'https://r-e-image2vids.onrender.com/',
     icon: Film,
-    features: ['AI Scene Sequencing', 'Auto-Beat Sync', 'Branded Watermarking', 'Social Media Optimization'],
+    features: ['Visual Recognition Search', 'Multi-Platform Scraping', 'MLS & Address Matching', 'Video Asset Discovery'],
     color: 'bg-sky-600',
     imageUrl: 'https://picsum.photos/seed/realestate/800/600'
   }
