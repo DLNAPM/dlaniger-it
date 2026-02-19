@@ -17,7 +17,8 @@ import {
   Image,
   Car,
   Award,
-  Headphones
+  Headphones,
+  Film
 } from 'lucide-react';
 import { AppData } from './types';
 
@@ -197,6 +198,22 @@ export const APPS: AppData[] = [
     features: ['Payment Tracking', 'Financial Analytics', 'Maintenance & Repairs', 'Tenant Management'],
     color: 'bg-rose-500',
     imageUrl: 'https://picsum.photos/seed/pmpr/800/600'
+  },
+  {
+    id: 're-image2vidz',
+    name: 'R.E.-Image2Vidz',
+    tagline: 'Transform property listings into cinematic video tours instantly.',
+    description: 'Automatically generate engaging video walkthroughs from your real estate listing photos using AI.',
+    fullDescription: [
+      "R.E.-Image2Vidz is the ultimate marketing companion for Real Estate Agents and Property Managers. In a market where video content drives engagement, this tool effortlessly converts static property images into dynamic, professional-grade video tours.",
+      "How to use: Simply upload your high-quality listing photos (interior, exterior, amenities). Our AI analyzes the room types and spatial flow to arrange them logically. Select a mood (e.g., 'Modern Luxury', 'Cozy Family', 'Upbeat Open House') to auto-select background music and transition styles.",
+      "Within moments, download a polished MP4 video ready for Instagram Reels, TikTok, or Zillow. Enhance your listings and capture more leads without expensive video production teams."
+    ],
+    url: 'https://r-e-image2vids.onrender.com/',
+    icon: Film,
+    features: ['AI Scene Sequencing', 'Auto-Beat Sync', 'Branded Watermarking', 'Social Media Optimization'],
+    color: 'bg-sky-600',
+    imageUrl: 'https://picsum.photos/seed/realestate/800/600'
   }
 ];
 
