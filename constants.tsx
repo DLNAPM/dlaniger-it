@@ -214,6 +214,22 @@ export const APPS: AppData[] = [
     features: ['Visual Recognition Search', 'Multi-Platform Scraping', 'MLS & Address Matching', 'Video Asset Discovery'],
     color: 'bg-sky-600',
     imageUrl: 'https://picsum.photos/seed/realestate/800/600'
+  },
+  {
+    id: 'heloc-velocity-calculator',
+    name: 'HELOC Velocity Calculator',
+    tagline: 'Accelerate your mortgage payoff with smart banking.',
+    description: 'Calculate how quickly you can pay off your mortgage using a Home Equity Line of Credit (HELOC) and velocity banking strategies.',
+    fullDescription: [
+      "The HELOC Velocity Calculator is a sophisticated financial planning tool designed to empower homeowners with the velocity banking strategy. By strategically utilizing a Home Equity Line of Credit (HELOC), this app demonstrates how to significantly reduce mortgage interest and shorten payoff terms without changing your lifestyle.",
+      "How to use: Start by inputting your current mortgage details, including balance, rate, and term. Next, add your monthly income and expenses to calculate your 'cash flow'. The app then simulates using this cash flow via a HELOC to make lump-sum principal payments, showing you the accelerated payoff date and total interest saved.",
+      "Top 3 Features: 1. Smart Amortization Engine: Instantly compares traditional vs. velocity payoff schedules. 2. Cash Flow Analyzer: Identifies exactly how much 'velocity' you can apply to your debt each month. 3. Interactive Savings Visualizer: See your debt curve crash in real-time as you adjust your strategy parameters."
+    ],
+    url: 'https://heloc-velocity-calculator-762702816387.us-west1.run.app/',
+    icon: Calculator,
+    features: ['Mortgage Payoff Simulation', 'Interest Savings Tracker', 'Velocity Banking Strategy', 'Interactive Charts'],
+    color: 'bg-green-600',
+    imageUrl: 'https://picsum.photos/seed/heloc/800/600'
   }
 ];
 
