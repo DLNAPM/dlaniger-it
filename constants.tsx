@@ -18,11 +18,28 @@ import {
   Car,
   Award,
   Headphones,
-  Film
+  Film,
+  ListChecks
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'next-steps',
+    name: 'Next Steps',
+    tagline: 'Prepare your loved ones for the future financially.',
+    description: 'A secure family financial records app for spouses to organize assets, debts, and insurance for peace of mind.',
+    fullDescription: [
+      "Next Steps is a vital Family Financial Records app designed for spouses and significant others. It addresses the critical need for preparedness, ensuring that if a loved one passes away, the living partner has immediate, organized access to all financial matters.",
+      "How to use: Securely log details of your Assets, Debts, Life Insurance, and other accounts. Grant your partner shared access so they have a clear roadmap of the family's financial standing, eliminating confusion during difficult times.",
+      "Top 3 Features: 1. Shared Financial Vault: Securely store and share access to critical asset and debt records. 2. Life Insurance Organizer: Keep policy details and beneficiary info instantly accessible. 3. Legacy Readiness Check: Ensure your partner is fully prepared for 'what happens next'."
+    ],
+    url: 'https://next-steps-7lnf.onrender.com',
+    icon: ListChecks,
+    features: ['Shared Financial Records', 'Asset & Debt Tracking', 'Life Insurance Log', 'Legacy Planning'],
+    color: 'bg-teal-500',
+    imageUrl: 'https://picsum.photos/seed/nextsteps/800/600'
+  },
   {
     id: 'certificate-makers',
     name: 'Certificate Makers',
