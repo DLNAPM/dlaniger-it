@@ -19,11 +19,28 @@ import {
   Award,
   Headphones,
   Film,
-  ListChecks
+  ListChecks,
+  LineChart
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'custom-amortize',
+    name: 'Custom Amortize',
+    tagline: 'Take control of your loan payoff schedule.',
+    description: 'Create custom amortization schedules with extra payments to see how much interest and time you can save.',
+    fullDescription: [
+      "Custom Amortize is a powerful financial tool that lets you visualize and plan your loan payoff strategy. Whether it's a mortgage, auto loan, or personal debt, this app helps you understand the impact of extra payments.",
+      "How to use: Enter your loan amount, interest rate, and term. Then, add custom extra payments—either as a one-time lump sum, recurring monthly additions, or annual bumps. The app will instantly recalculate your amortization schedule.",
+      "Top 3 Features: 1. Custom Extra Payments: Model complex payment scenarios easily. 2. Interactive Amortization Table: View a detailed breakdown of every payment. 3. Savings Visualizer: Instantly see the total interest saved and your new payoff date."
+    ],
+    url: 'https://custom-amortize.onrender.com',
+    icon: LineChart,
+    features: ['Extra Payment Modeling', 'Detailed Amortization Table', 'Interest Savings Calculator', 'Visual Payoff Graphs'],
+    color: 'bg-indigo-500',
+    imageUrl: 'https://picsum.photos/seed/amortize/800/600'
+  },
   {
     id: 'next-steps',
     name: 'Next Steps',
