@@ -91,7 +91,7 @@ const Home: React.FC = () => {
               {
                 title: 'Productivity & Utilities',
                 description: 'Streamline your daily tasks and communications.',
-                apps: APPS.filter(app => ['certificate-makers', 'egreetz'].includes(app.id))
+                apps: APPS.filter(app => ['certificate-makers', 'egreetz', 'homecal'].includes(app.id))
               }
             ].map((group, idx) => (
               <div key={idx}>

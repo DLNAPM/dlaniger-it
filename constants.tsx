@@ -20,11 +20,28 @@ import {
   Headphones,
   Film,
   ListChecks,
-  LineChart
+  LineChart,
+  Calendar
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'homecal',
+    name: 'HomeCal',
+    tagline: 'Everything you need to stay organized.',
+    description: 'HomeCal is an AI-powered calendar and scheduling assistant designed to help you manage your appointments, dictate your agenda, and seamlessly organize your life using natural language and voice commands.',
+    fullDescription: [
+      "HomeCal is an AI-powered calendar and scheduling assistant designed to help you manage your appointments, dictate your agenda, and seamlessly organize your life using natural language and voice commands.",
+      "Voice-Activated Agenda & Smart Event Extraction: Interact with your calendar hands-free. Ask about your upcoming appointments, dictate new events, or upload documents and images to let our AI automatically extract dates, times, and details.",
+      "Top Features: Seamless Integrations with Google/Apple/Microsoft, Biometric Security with Face ID, Persistent Alerts via Background Logout, and Collaborative Scheduling to share events effortlessly."
+    ],
+    url: 'https://homecal-a9vn.onrender.com',
+    icon: Calendar,
+    features: ['Voice-Activated Agenda', 'Smart Event Extraction', 'Seamless Integrations', 'Biometric Security'],
+    color: 'bg-teal-600',
+    imageUrl: 'https://picsum.photos/seed/homecal/800/600'
+  },
   {
     id: 'custom-amortize',
     name: 'Custom Amortize',
