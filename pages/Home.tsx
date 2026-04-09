@@ -67,29 +67,55 @@ const Home: React.FC = () => {
             <span className="text-brand-600 font-semibold tracking-wide uppercase text-sm">Our Portfolio</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Tools tailored for you</h2>
             <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-              From managing reunions to designing homes, discover the app that fits your needs.
+              From managing finances to designing homes, discover the app that fits your needs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {APPS.map((app) => (
-              <div key={app.id} className="group flex flex-col bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                <div className="relative h-48 overflow-hidden">
-                  <div className={`absolute inset-0 ${app.color} opacity-90 group-hover:opacity-100 transition-opacity`}></div>
-                  {/* Pattern overlay */}
-                  <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <app.icon className="text-white w-16 h-16 drop-shadow-md transform group-hover:scale-110 transition-transform duration-300" />
-                  </div>
+          <div className="space-y-16">
+            {[
+              {
+                title: 'Finance & Wealth',
+                description: 'Tools for managing money, loans, and financial planning.',
+                apps: APPS.filter(app => ['custom-amortize', 'next-steps', 'my-mileages', 'alumni-bookkeeping', 'credit-worth', 'heloc-velocity-calculator'].includes(app.id))
+              },
+              {
+                title: 'Real Estate & Property',
+                description: 'Solutions for property management and real estate marketing.',
+                apps: APPS.filter(app => ['pmpr-app', 're-image2vidz', 'architect-3d'].includes(app.id))
+              },
+              {
+                title: 'Media & Creativity',
+                description: 'AI-powered tools for image, video, and audio enhancement.',
+                apps: APPS.filter(app => ['pixelperfect-pro', 'tourgenie', 'muziq-slides', 'audibites'].includes(app.id))
+              },
+              {
+                title: 'Productivity & Utilities',
+                description: 'Streamline your daily tasks and communications.',
+                apps: APPS.filter(app => ['certificate-makers', 'egreetz'].includes(app.id))
+              }
+            ].map((group, idx) => (
+              <div key={idx}>
+                <div className="mb-6 border-b border-slate-100 pb-4">
+                  <h3 className="text-2xl font-bold text-slate-800">{group.title}</h3>
+                  <p className="text-slate-500 mt-1">{group.description}</p>
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{app.name}</h3>
-                  <p className="text-slate-600 mb-4 flex-grow text-sm leading-relaxed">{app.description}</p>
-                  <div className="mt-auto pt-4 border-t border-slate-200">
-                    <NavLink to={`/app/${app.id}`} className="inline-flex items-center text-brand-600 font-semibold hover:text-brand-700 transition-colors group-hover:gap-2">
-                      Learn more <ArrowRight size={16} className="ml-1" />
-                    </NavLink>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {group.apps.map((app) => (
+                    <div key={app.id} className="group flex items-start gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:shadow-lg hover:shadow-slate-200/50 hover:bg-white transition-all duration-300">
+                      <div className={`w-12 h-12 rounded-xl ${app.color} flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                        <app.icon size={24} />
+                      </div>
+                      <div className="flex flex-col flex-grow h-full">
+                        <h4 className="text-base font-bold text-slate-900 leading-tight mb-1">{app.name}</h4>
+                        <p className="text-slate-500 text-sm line-clamp-2 mb-3">{app.description}</p>
+                        <div className="mt-auto">
+                          <NavLink to={`/app/${app.id}`} className="inline-flex items-center text-brand-600 text-sm font-semibold hover:text-brand-700 transition-colors">
+                            Learn more <ArrowRight size={14} className="ml-1" />
+                          </NavLink>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
