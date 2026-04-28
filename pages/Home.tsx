@@ -92,6 +92,11 @@ const Home: React.FC = () => {
                 title: 'Productivity & Utilities',
                 description: 'Streamline your daily tasks and communications.',
                 apps: APPS.filter(app => ['certificate-makers', 'egreetz', 'homecal'].includes(app.id))
+              },
+              {
+                title: 'Spirituality & Theology',
+                description: 'Deepen your faith and scriptural understanding with AI guidance.',
+                apps: APPS.filter(app => ['eisejesus'].includes(app.id))
               }
             ].map((group, idx) => (
               <div key={idx}>

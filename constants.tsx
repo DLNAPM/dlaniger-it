@@ -21,11 +21,28 @@ import {
   Film,
   ListChecks,
   LineChart,
-  Calendar
+  Calendar,
+  BookOpen
 } from 'lucide-react';
 import { AppData } from './types';
 
 export const APPS: AppData[] = [
+  {
+    id: 'eisejesus',
+    name: 'EiseJesUs',
+    tagline: "The divine synthesis of Eisegesis and Jesus.",
+    description: "Discover Jesus' true intentions through deep scriptural exploration and theological analysis.",
+    fullDescription: [
+      "EiseJesUs is the divine synthesis of Eisegesis (leading out meaning) and Jesus. Our purpose is to travel through the text to discover Jesus' true intentions for us today.",
+      "Steps of Seeking: Search for a specific scripture verse or a question currently heavy on your heart. Reflect on God's Intent and how the Word applies to your personal journey. Analyze historical context, grammar, and literary genre for a solid foundation. Finally, Connect and share your findings with your Study Group to foster communal growth.",
+      "Designed for believers seeking scriptural depth, theology students, small groups, and anyone who desires to hear the heartbeat of the Gospels more clearly. EiseJesUs helps you move beyond surface-level reading into deep theological discovery."
+    ],
+    url: 'https://eisejesus.onrender.com/',
+    icon: BookOpen,
+    features: ['Scriptural Deconstruction', 'Historical Context Analysis', 'Theological Intent Search', 'Communal Study Sharing'],
+    color: 'bg-amber-700',
+    imageUrl: 'https://picsum.photos/seed/bible/800/600'
+  },
   {
     id: 'homecal',
     name: 'HomeCal',
