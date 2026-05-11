@@ -96,7 +96,7 @@ const Home: React.FC = () => {
               {
                 title: 'Spirituality & Theology',
                 description: 'Deepen your faith and scriptural understanding with AI guidance.',
-                apps: APPS.filter(app => ['eisejesus'].includes(app.id))
+                apps: APPS.filter(app => ['xejesus'].includes(app.id))
               }
             ].map((group, idx) => (
               <div key={idx}>
