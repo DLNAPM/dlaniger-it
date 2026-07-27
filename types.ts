@@ -17,3 +17,9 @@ export interface NavItem {
   label: string;
   path: string;
 }
+
+export interface AppGroup {
+  title: string;
+  description: string;
+  appIds: string[];
+}

@@ -24,7 +24,7 @@ import {
   Calendar,
   BookOpen
 } from 'lucide-react';
-import { AppData } from './types';
+import { AppData, AppGroup } from './types';
 
 export const APPS: AppData[] = [
   {
@@ -298,6 +298,34 @@ export const APPS: AppData[] = [
     features: ['Mortgage Payoff Simulation', 'Interest Savings Tracker', 'Velocity Banking Strategy', 'Interactive Charts'],
     color: 'bg-green-600',
     imageUrl: 'https://picsum.photos/seed/heloc/800/600'
+  }
+];
+
+export const APP_GROUPS: AppGroup[] = [
+  {
+    title: 'Finance & Wealth',
+    description: 'Tools for managing money, loans, and financial planning.',
+    appIds: ['custom-amortize', 'next-steps', 'my-mileages', 'alumni-bookkeeping', 'credit-worth', 'heloc-velocity-calculator']
+  },
+  {
+    title: 'Real Estate & Property',
+    description: 'Solutions for property management and real estate marketing.',
+    appIds: ['pmpr-app', 're-image2vidz', 'architect-3d']
+  },
+  {
+    title: 'Media & Creativity',
+    description: 'AI-powered tools for image, video, and audio enhancement.',
+    appIds: ['pixelperfect-pro', 'tourgenie', 'muziq-slides', 'audibites']
+  },
+  {
+    title: 'Productivity & Utilities',
+    description: 'Streamline your daily tasks and communications.',
+    appIds: ['certificate-makers', 'egreetz', 'homecal']
+  },
+  {
+    title: 'Spirituality & Theology',
+    description: 'Deepen your faith and scriptural understanding with AI guidance.',
+    appIds: ['xejesus']
   }
 ];
 

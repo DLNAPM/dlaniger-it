@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid, ShieldCheck } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { APPS } from '../constants';
+import { APPS, APP_GROUPS } from '../constants';
 
 const Layout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,29 +43,47 @@ const Layout: React.FC = () => {
                   Apps <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
                 </button>
                 {/* Dropdown */}
-                <div className="absolute top-full -left-4 w-72 bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-3">
-                   <div className="mb-2 px-3 py-1">
-                     <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Our Suite</p>
+                <div className="absolute top-full -left-20 w-[580px] bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-4 z-50">
+                   <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                     {APP_GROUPS.map((group) => {
+                       const groupApps = APPS.filter(a => group.appIds.includes(a.id));
+                       if (groupApps.length === 0) return null;
+                       return (
+                         <div key={group.title} className="space-y-1">
+                           <div className="flex items-center justify-between pb-1 border-b border-slate-100 mb-1">
+                             <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                               {group.title}
+                             </span>
+                             <span className="text-[10px] font-semibold text-slate-300">
+                               {groupApps.length}
+                             </span>
+                           </div>
+                           <div className="space-y-0.5">
+                             {groupApps.map((app) => (
+                               <NavLink 
+                                  key={app.id} 
+                                  to={`/app/${app.id}`}
+                                  className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-slate-50 transition-colors text-xs text-slate-700 hover:text-brand-600 group/item"
+                                >
+                                  <div className={`w-6 h-6 rounded-md ${app.color} flex items-center justify-center text-white shrink-0 group-hover/item:scale-105 transition-transform shadow-xs`}>
+                                    <app.icon size={13} />
+                                  </div>
+                                  <span className="font-medium truncate">{app.name}</span>
+                                </NavLink>
+                             ))}
+                           </div>
+                         </div>
+                       );
+                     })}
                    </div>
-                   {APPS.map((app) => (
-                     <NavLink 
-                        key={app.id} 
-                        to={`/app/${app.id}`}
-                        className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors text-sm text-slate-700 hover:text-brand-600"
-                      >
-                        <div className={`w-8 h-8 rounded-lg ${app.color} flex items-center justify-center text-white shrink-0`}>
-                          <app.icon size={16} />
-                        </div>
-                        <span className="font-medium">{app.name}</span>
-                      </NavLink>
-                   ))}
-                   <div className="mt-3 pt-3 border-t border-slate-100">
+                   <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between px-2">
+                     <span className="text-xs text-slate-400 font-medium">{APPS.length} AI Applications</span>
                      <NavLink 
                         to="/deployment-apps"
-                        className="flex items-center gap-3 px-3 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 transition-colors text-sm text-brand-700"
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 transition-colors text-xs font-bold text-brand-700"
                       >
-                        <LayoutGrid size={16} />
-                        <span className="font-bold">Deployment Apps</span>
+                        <LayoutGrid size={14} />
+                        <span>Deployment Apps</span>
                       </NavLink>
                    </div>
                 </div>
@@ -104,24 +122,41 @@ const Layout: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-16 px-4 py-6 flex flex-col space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <NavLink to="/" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Home</NavLink>
-            <div className="border-l-2 border-slate-100 pl-4 space-y-3">
-              <p className="text-xs uppercase text-slate-400 font-semibold tracking-wider">Product Suite</p>
-              {APPS.map((app) => (
-                <NavLink key={app.id} to={`/app/${app.id}`} onClick={closeMenu} className="flex items-center gap-3 text-sm text-slate-600 hover:text-brand-600">
-                  <div className={`w-6 h-6 rounded ${app.color} flex items-center justify-center text-white shrink-0`}>
-                    <app.icon size={12} />
+            <div className="border-l-2 border-slate-100 pl-3 space-y-4">
+              {APP_GROUPS.map((group) => {
+                const groupApps = APPS.filter(a => group.appIds.includes(a.id));
+                if (groupApps.length === 0) return null;
+                return (
+                  <div key={group.title} className="space-y-1.5">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{group.title}</p>
+                    <div className="space-y-1 pl-1">
+                      {groupApps.map((app) => (
+                        <NavLink 
+                          key={app.id} 
+                          to={`/app/${app.id}`} 
+                          onClick={closeMenu} 
+                          className="flex items-center gap-2.5 text-xs text-slate-600 hover:text-brand-600 py-1"
+                        >
+                          <div className={`w-5 h-5 rounded ${app.color} flex items-center justify-center text-white shrink-0`}>
+                            <app.icon size={11} />
+                          </div>
+                          <span className="font-medium">{app.name}</span>
+                        </NavLink>
+                      ))}
+                    </div>
                   </div>
-                  {app.name}
+                );
+              })}
+              <div className="pt-2 border-t border-slate-100">
+                <NavLink 
+                  to="/deployment-apps" 
+                  onClick={closeMenu} 
+                  className="flex items-center gap-2.5 text-xs font-bold text-brand-600"
+                >
+                  <LayoutGrid size={14} />
+                  Deployment Apps
                 </NavLink>
-              ))}
-              <NavLink 
-                to="/deployment-apps" 
-                onClick={closeMenu} 
-                className="flex items-center gap-3 text-sm font-bold text-brand-600 pt-2"
-              >
-                <LayoutGrid size={14} />
-                Deployment Apps
-              </NavLink>
+              </div>
             </div>
             <NavLink to="/about" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">About</NavLink>
             <NavLink to="/contact" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Contact</NavLink>
