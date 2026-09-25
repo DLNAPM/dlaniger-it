@@ -149,7 +149,7 @@ export const APPS: AppData[] = [
       "How to use: Start by uploading screenshots or a brief screen recording of your app. Define your target audience and the core problem your app solves. TourGenie then synthesizes this data to create a storyboard, a compelling script, and a timed sequence that highlights your best features.",
       "In just a few clicks, you have a polished video ready for landing pages, social media, or investor pitches. It's like having a professional video production team in your pocket."
     ],
-    url: 'https://tourgenie-90s-app-tour-creator-761653955507.us-west1.run.app/',
+    url: 'https://tourgenie-90s-app-tour-creator.onrender.com/',
     icon: Video,
     features: ['AI Script Synthesis', '90-Second Optimization', 'Cinematic Transitions', 'Voiceover Integration'],
     color: 'bg-violet-600',
