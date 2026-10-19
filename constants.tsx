@@ -37,7 +37,7 @@ export const APPS: AppData[] = [
       "Steps of Seeking: Search for a specific scripture verse or a question currently heavy on your heart. Reflect on God's Intent and how the Word applies to your personal journey. Analyze historical context, grammar, and literary genre for a solid foundation. Finally, Connect and share your findings with your Study Group to foster communal growth.",
       "Designed for believers seeking scriptural depth, theology students, small groups, and anyone who desires to hear the heartbeat of the Gospels more clearly. XeJesUs helps you move beyond surface-level reading into deep theological discovery."
     ],
-    url: 'https://xejesus.onrender.com/',
+    url: 'https://xejesus-app.onrender.com',
     icon: BookOpen,
     features: ['Scriptural Deconstruction', 'Historical Context Analysis', 'Theological Intent Search', 'Communal Study Sharing'],
     color: 'bg-amber-700',
