@@ -43,8 +43,8 @@ const Layout: React.FC = () => {
                   Apps <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
                 </button>
                 {/* Dropdown */}
-                <div className="absolute top-full -left-20 w-[580px] bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-4 z-50">
-                   <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                <div className="absolute top-full -left-20 w-[640px] bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-4 z-50">
+                   <div className="grid grid-cols-2 gap-x-6 gap-y-4 max-h-[520px] overflow-y-auto pr-1">
                      {APP_GROUPS.map((group) => {
                        const groupApps = APPS.filter(a => group.appIds.includes(a.id));
                        if (groupApps.length === 0) return null;

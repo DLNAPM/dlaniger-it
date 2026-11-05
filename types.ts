@@ -11,6 +11,20 @@ export interface AppData {
   features: string[];
   color: string;
   imageUrl: string;
+  howToUseSteps?: {
+    step: number;
+    title: string;
+    description: string;
+  }[];
+  topThreeFeatures?: {
+    title: string;
+    description: string;
+    badge?: string;
+  }[];
+  launchInstructions?: {
+    webLaunch: string[];
+    downloadLaunch: string[];
+  };
 }
 
 export interface NavItem {

@@ -22,7 +22,8 @@ import {
   ListChecks,
   LineChart,
   Calendar,
-  BookOpen
+  BookOpen,
+  Activity
 } from 'lucide-react';
 import { AppData, AppGroup } from './types';
 
@@ -44,6 +45,75 @@ export const APPS: AppData[] = [
     imageUrl: 'https://picsum.photos/seed/bible/800/600'
   },
   {
+    id: 'ahlr',
+    name: 'AHLR',
+    tagline: 'Annual Health Lab Report Natural Analysis & Optimization.',
+    description: 'Transform annual blood work into evidence-based natural recommendations, daily meal plans, exercise regimens, and fasting protocols.',
+    fullDescription: [
+      "AHLR (Annual Health Lab Report Natural Analysis) is a patient-driven health analysis platform that transforms complex blood test and metabolic lab results into evidence-based natural health recommendations, personalized daily meal plans, targeted exercise routines, and structured fasting protocols.",
+      "How to use: Securely input your annual health lab biomarkers (such as lipid panels, fasting glucose, HbA1c, metabolic markers, and vital stats). The system instantly interprets your readings against optimal functional ranges and provides comprehensive, actionable lifestyle recommendations.",
+      "Top 3 Features: 1. Evidence-Based Lab Biomarker Analysis: Understand your numbers with comprehensive biomarker breakdowns and natural lifestyle insights. 2. Tailored Meal & Exercise Regimens: Receive personalized nutrition plans and physical activity schedules adapted to your metabolic profile. 3. Circadian Fasting & Video Recipes: Access time-restricted feeding protocols and curated recipe videos to foster lifelong health and vitality."
+    ],
+    url: 'https://ahlr.onrender.com',
+    icon: Activity,
+    features: [
+      'Biomarker Lab Analysis',
+      'Personalized Meal Plans',
+      'Targeted Exercise Regimens',
+      'Circadian Fasting Protocols',
+      'Step-by-Step Recipe Videos',
+      'Metabolic Trend Monitoring'
+    ],
+    color: 'bg-emerald-600',
+    imageUrl: 'https://picsum.photos/seed/ahlr/800/600',
+    howToUseSteps: [
+      {
+        step: 1,
+        title: 'Input Your Lab Biomarkers',
+        description: 'Navigate to the Lab Entry section and input the values from your annual blood test (such as Fasting Glucose, HbA1c, Total Cholesterol, HDL, LDL, Triglycerides, and liver enzymes) along with your anthropometric baseline.'
+      },
+      {
+        step: 2,
+        title: 'Generate Natural Health Recommendations',
+        description: 'The AI engine interprets your biomarkers against evidence-based functional health benchmarks and automatically creates a custom, non-pharmacological lifestyle optimization plan.'
+      },
+      {
+        step: 3,
+        title: 'Execute Meal Plans, Workouts & Fasting Protocols',
+        description: 'Access your daily whole-food meal menus, follow targeted aerobic and resistance exercise schedules, adhere to time-restricted circadian fasting intervals, and watch instructional recipe videos.'
+      }
+    ],
+    topThreeFeatures: [
+      {
+        title: 'Evidence-Based Biomarker Lab Analysis',
+        description: 'Decodes routine blood panels into clear, actionable insights. Pinpoints borderline and out-of-range metabolic markers with natural, functional lifestyle recommendations.',
+        badge: 'Core AI Engine'
+      },
+      {
+        title: 'Personalized Daily Meal & Exercise Plans',
+        description: 'Generates tailored whole-food nutrition regimens and targeted cardiovascular/strength workouts calibrated to directly address your specific biomarker indicators.',
+        badge: 'Tailored Lifestyle'
+      },
+      {
+        title: 'Circadian Fasting Protocols & Video Recipes',
+        description: 'Provides structured time-restricted feeding schedules (such as 14:10 or 16:8 protocols) alongside curated, step-by-step healthy culinary video demonstrations.',
+        badge: 'Interactive Media'
+      }
+    ],
+    launchInstructions: {
+      webLaunch: [
+        "Click the 'Launch Web App' button to open AHLR directly in any modern browser (Chrome, Safari, Firefox, Edge).",
+        "No software download or installation required; the web app runs instantly in real time on any desktop, tablet, or mobile phone.",
+        "Bookmark https://ahlr.onrender.com for one-tap access to your health dashboard and daily meal protocols."
+      ],
+      downloadLaunch: [
+        "Native mobile editions for iOS (Apple App Store) and Android (Google Play) are currently in deployment staging.",
+        "You can install AHLR right now as a PWA / Web App by tapping 'Share' > 'Add to Home Screen' in Safari on iOS, or 'Add to Home screen' in Chrome on Android.",
+        "Desktop shortcut packages for Windows and macOS will also be available soon for offline report viewing."
+      ]
+    }
+  },
+  {
     id: 'homecal',
     name: 'HomeCal',
     tagline: 'Everything you need to stay organized.',
@@ -57,7 +127,53 @@ export const APPS: AppData[] = [
     icon: Calendar,
     features: ['Voice-Activated Agenda', 'Smart Event Extraction', 'Seamless Integrations', 'Biometric Security'],
     color: 'bg-teal-600',
-    imageUrl: 'https://picsum.photos/seed/homecal/800/600'
+    imageUrl: 'https://picsum.photos/seed/homecal/800/600',
+    howToUseSteps: [
+      {
+        step: 1,
+        title: 'Connect Calendars & Set Preferences',
+        description: 'Synchronize your Google, Apple, or Microsoft calendars to aggregate your schedule into HomeCal’s intelligent single pane of glass.'
+      },
+      {
+        step: 2,
+        title: 'Voice Dictate or Extract Events',
+        description: 'Speak in natural voice to dictate new appointments, or upload photos, documents, and invitations for automatic date and time extraction.'
+      },
+      {
+        step: 3,
+        title: 'Collaborate & Stay Protected',
+        description: 'Share family and team agendas effortlessly, track invite responses, and maintain complete privacy with Face ID biometric locking.'
+      }
+    ],
+    topThreeFeatures: [
+      {
+        title: 'Voice-Activated Agenda',
+        description: 'Hands-free schedule management. Ask about upcoming meetings, dictate events on the go, and hear a daily briefing.',
+        badge: 'Voice AI'
+      },
+      {
+        title: 'Smart Multimodal Extraction',
+        description: 'Drop in flyers, screenshots, or pasted text. AI extracts dates, venues, and descriptions to auto-schedule your events.',
+        badge: 'Multimodal AI'
+      },
+      {
+        title: 'Biometric Security & Persistent Alerts',
+        description: 'Face ID locking preserves complete privacy, while background alerts ensure you never miss critical reminders.',
+        badge: 'Security & Sync'
+      }
+    ],
+    launchInstructions: {
+      webLaunch: [
+        "Click 'Launch Web App' to open HomeCal directly at https://homecal-a9vn.onrender.com.",
+        "Runs on any web browser with microphone support for speech recognition.",
+        "Direct integration with your existing calendars with zero installation."
+      ],
+      downloadLaunch: [
+        "Add HomeCal to your mobile home screen via your browser's 'Add to Home Screen' option.",
+        "Native iOS and Android builds with push notifications are currently in deployment.",
+        "Desktop sync client for Mac and Windows coming soon."
+      ]
+    }
   },
   {
     id: 'custom-amortize',
@@ -73,7 +189,53 @@ export const APPS: AppData[] = [
     icon: LineChart,
     features: ['Extra Payment Modeling', 'Detailed Amortization Table', 'Interest Savings Calculator', 'Visual Payoff Graphs'],
     color: 'bg-indigo-500',
-    imageUrl: 'https://picsum.photos/seed/amortize/800/600'
+    imageUrl: 'https://picsum.photos/seed/amortize/800/600',
+    howToUseSteps: [
+      {
+        step: 1,
+        title: 'Input Loan Parameters',
+        description: 'Enter your principal balance, annual interest rate, and loan term length to construct the baseline amortization schedule.'
+      },
+      {
+        step: 2,
+        title: 'Add Custom Extra Payments',
+        description: 'Incorporate extra payments—whether recurring monthly surpluses, annual holiday bonuses, or one-time lump-sum contributions.'
+      },
+      {
+        step: 3,
+        title: 'Visualize Savings & Accelerated Payoff',
+        description: 'Instantly view your calculated interest savings, revised debt-free payoff date, and complete month-by-month payment schedule.'
+      }
+    ],
+    topThreeFeatures: [
+      {
+        title: 'Custom Extra Payment Modeling',
+        description: 'Model real-world payment scenarios with one-time, monthly, or annual principal bumps to test multiple payoff strategies.',
+        badge: 'Financial Engine'
+      },
+      {
+        title: 'Interactive Amortization Table',
+        description: 'Examine detailed breakdowns showing every single payment, principal paid, interest paid, and remaining balance over time.',
+        badge: 'Precision Breakdown'
+      },
+      {
+        title: 'Interest Savings Visualizer',
+        description: 'Side-by-side graphical visualization showing total interest eliminated and years trimmed off your amortization schedule.',
+        badge: 'Interactive Visuals'
+      }
+    ],
+    launchInstructions: {
+      webLaunch: [
+        "Click 'Launch Web App' to access Custom Amortize immediately at https://custom-amortize.onrender.com.",
+        "High-performance calculation runs in-browser with zero latency or account requirements.",
+        "Save and export amortization schedules directly to PDF or spreadsheet formats."
+      ],
+      downloadLaunch: [
+        "Bookmark and install Custom Amortize to your home screen for instant mobile calculations.",
+        "Native Android APK and iOS apps are currently in staging.",
+        "Windows and Mac desktop editions coming soon."
+      ]
+    }
   },
   {
     id: 'next-steps',
@@ -321,6 +483,11 @@ export const APP_GROUPS: AppGroup[] = [
     title: 'Productivity & Utilities',
     description: 'Streamline your daily tasks and communications.',
     appIds: ['certificate-makers', 'egreetz', 'homecal']
+  },
+  {
+    title: 'Health & Wellness',
+    description: 'AI-driven biological analysis, nutrition planning, and lifestyle optimization.',
+    appIds: ['ahlr']
   },
   {
     title: 'Spirituality & Theology',
