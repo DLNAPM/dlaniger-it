@@ -23,7 +23,8 @@ import {
   LineChart,
   Calendar,
   BookOpen,
-  Activity
+  Activity,
+  CalendarCheck
 } from 'lucide-react';
 import { AppData, AppGroup } from './types';
 
@@ -414,6 +415,75 @@ export const APPS: AppData[] = [
     imageUrl: 'https://picsum.photos/seed/credit/800/600'
   },
   {
+    id: 'realcal-bookings',
+    name: 'REALCal Bookings',
+    tagline: 'Real-time availability calendar with instant dynamic pricing and booking.',
+    description: 'A real-time availability calendar and reservation engine featuring dynamic nightly rates, blackout dates, instant price breakdown, and secure Stripe checkout.',
+    fullDescription: [
+      "REALCal Bookings is a next-generation real-time availability calendar and reservation engine engineered for property managers, short-term rental hosts, and venue operators. It delivers seamless guest booking with dynamic nightly rates, custom blackout date management, transparent instant price breakdowns, and friction-free Stripe checkout.",
+      "How to use: 1. Browse & Select Dates: Explore real-time property availability on the interactive calendar with dynamically adjusted nightly pricing. 2. Instant Quote & Price Breakdown: Select check-in and check-out dates to review a line-item cost summary including taxes, cleaning fees, and seasonal discounts. 3. Secure Booking & Smart Lock Provisioning: Complete your reservation via encrypted Stripe payment to instantly receive automated email/SMS booking confirmations and smart lock access credentials.",
+      "Top 3 Features: 1. Live Calendar with Dynamic Nightly Rates: Real-time availability synchronization that prevents double bookings while dynamically adjusting rates for weekends, holidays, and peak seasons. 2. Transparent Instant Price Breakdown: Real-time calculation of night counts, cleaning fees, taxes, and security deposits before checkout. 3. Automated Stripe Checkout & Smart Access: Instant payment processing paired with automated SMS/email booking confirmations, receipts, and smart lock access codes."
+    ],
+    url: 'https://realcal-bookings-tjrz.onrender.com',
+    icon: CalendarCheck,
+    features: [
+      'Real-Time Availability Calendar',
+      'Dynamic Nightly Pricing Engine',
+      'Automated Blackout Date Management',
+      'Instant Itemized Price Breakdown',
+      'Encrypted Stripe Payment Checkout',
+      'Automated SMS & Email Confirmations'
+    ],
+    color: 'bg-indigo-600',
+    imageUrl: 'https://picsum.photos/seed/realcal/800/600',
+    howToUseSteps: [
+      {
+        step: 1,
+        title: 'Check Live Availability & Select Dates',
+        description: 'Navigate the interactive real-time availability calendar to select your desired check-in and check-out dates, with blackout dates and booked ranges clearly indicated.'
+      },
+      {
+        step: 2,
+        title: 'Review Instant Price Breakdown',
+        description: 'View an instant transparent cost calculation showing dynamic nightly rates, seasonal adjustments, cleaning fees, and applicable taxes with zero hidden surprises.'
+      },
+      {
+        step: 3,
+        title: 'Book via Stripe & Receive Smart Access',
+        description: 'Finalize your reservation through encrypted Stripe checkout. Instantly receive automated booking confirmation emails, SMS updates, and physical smart lock entry codes.'
+      }
+    ],
+    topThreeFeatures: [
+      {
+        title: 'Real-Time Availability & Dynamic Nightly Rates',
+        description: 'Instant synchronization of booked and blackout dates prevents conflicts while intelligently adjusting prices for weekends, holidays, and high-demand seasons.',
+        badge: 'Calendar Engine'
+      },
+      {
+        title: 'Instant Transparent Price Breakdown',
+        description: 'Calculates the total cost breakdown in real time—itemizing nightly charges, cleaning fees, taxes, and security deposits before checkout.',
+        badge: 'Instant Pricing'
+      },
+      {
+        title: 'Stripe Checkout & Automated Smart Access',
+        description: 'Friction-free payment processing combined with automated Twilio SMS and email receipts, itinerary details, and smart lock access codes.',
+        badge: 'Payments & Automation'
+      }
+    ],
+    launchInstructions: {
+      webLaunch: [
+        "Click 'Launch Web App' to open REALCal Bookings directly at https://realcal-bookings-tjrz.onrender.com.",
+        "Zero setup required; guests can check live calendars and book immediately from any modern browser.",
+        "Property managers can access the built-in Admin portal to manage rates, blackout dates, and guest records."
+      ],
+      downloadLaunch: [
+        "Add REALCal Bookings to your mobile home screen as a PWA for one-tap guest access and booking lookups.",
+        "Native iOS and Android reservation apps for guest and host management are currently in deployment.",
+        "Desktop property manager management tool for macOS and Windows coming soon."
+      ]
+    }
+  },
+  {
     id: 'pmpr-app',
     name: 'PMPR App',
     tagline: 'Streamline property management with precision and ease.',
@@ -472,7 +542,7 @@ export const APP_GROUPS: AppGroup[] = [
   {
     title: 'Real Estate & Property',
     description: 'Solutions for property management and real estate marketing.',
-    appIds: ['pmpr-app', 're-image2vidz', 'architect-3d']
+    appIds: ['realcal-bookings', 'pmpr-app', 're-image2vidz', 'architect-3d']
   },
   {
     title: 'Media & Creativity',
