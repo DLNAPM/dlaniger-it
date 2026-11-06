@@ -24,7 +24,8 @@ import {
   Calendar,
   BookOpen,
   Activity,
-  CalendarCheck
+  CalendarCheck,
+  PackageCheck
 } from 'lucide-react';
 import { AppData, AppGroup } from './types';
 
@@ -683,6 +684,25 @@ export const DEPLOYMENT_APPS = [
         'TestFlight for seamless beta testing with users',
         'Access to advanced technologies like iCloud and Apple Pay',
         'Xcode integration for high-performance native development'
+      ]
+    }
+  },
+  {
+    id: 'deploy-my-app',
+    name: 'Deploy My App (Apple & Google Play)',
+    url: 'https://deploy-my-app-goog-appl-stores.ai.studio',
+    icon: PackageCheck,
+    color: 'bg-violet-600',
+    details: {
+      purpose: 'Automated deployment orchestrator and Capacitor mobile publisher for launching web applications directly onto the Apple App Store and Google Play.',
+      functionality: 'Automates the entire native mobile packaging and publishing pipeline. Initializes Capacitor iOS & Android containers, syncs CocoaPods and Gradle dependencies, creates and verifies release keystores (.keystore) with SHA-256 fingerprints, compiles Android App Bundles (.aab) and iOS archives (.ipa), and orchestrates submission to App Store Connect / TestFlight and Google Play Console.',
+      features: [
+        'Automated Capacitor iOS & Android project initialization',
+        'One-click Android App Bundle (.aab) generation & keystore signing',
+        'iOS CocoaPods sync & App Store Connect / TestFlight publishing',
+        'Real-time terminal build logs and store compliance verification',
+        'Cross-platform icon, splash screen, and permission injection',
+        'Automated store release track management (Alpha, Beta, Production)'
       ]
     }
   }

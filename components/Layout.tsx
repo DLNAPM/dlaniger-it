@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid, ShieldCheck } from 'lucide-react';
+import { Menu, X, Rocket, ExternalLink, ChevronDown, LayoutGrid, ShieldCheck, PackageCheck } from 'lucide-react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { APPS, APP_GROUPS } from '../constants';
 
@@ -31,20 +31,22 @@ const Layout: React.FC = () => {
             </NavLink>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-7">
               <NavLink 
                 to="/" 
                 className={({ isActive }) => `text-sm font-medium hover:text-brand-600 transition-colors ${isActive ? 'text-brand-600' : 'text-slate-600'}`}
               >
                 Home
               </NavLink>
+              
+              {/* Apps Mega Dropdown */}
               <div className="relative group h-full flex items-center">
-                <button className="text-sm font-medium text-slate-600 group-hover:text-brand-600 transition-colors flex items-center gap-1">
+                <button className="text-sm font-medium text-slate-600 group-hover:text-brand-600 transition-colors flex items-center gap-1 py-5">
                   Apps <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
                 </button>
                 {/* Dropdown */}
                 <div className="absolute top-full -left-20 w-[640px] bg-white shadow-2xl rounded-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 p-4 z-50">
-                   <div className="grid grid-cols-2 gap-x-6 gap-y-4 max-h-[520px] overflow-y-auto pr-1">
+                   <div className="grid grid-cols-2 gap-x-6 gap-y-4 max-h-[500px] overflow-y-auto pr-1">
                      {APP_GROUPS.map((group) => {
                        const groupApps = APPS.filter(a => group.appIds.includes(a.id));
                        if (groupApps.length === 0) return null;
@@ -76,18 +78,52 @@ const Layout: React.FC = () => {
                        );
                      })}
                    </div>
-                   <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between px-2">
-                     <span className="text-xs text-slate-400 font-medium">{APPS.length} AI Applications</span>
-                     <NavLink 
-                        to="/deployment-apps"
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 transition-colors text-xs font-bold text-brand-700"
-                      >
-                        <LayoutGrid size={14} />
-                        <span>Deployment Apps</span>
-                      </NavLink>
+
+                   {/* Dropdown Footer with Deploy My App feature */}
+                   <div className="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                     <div className="flex items-center justify-between px-1">
+                       <span className="text-xs text-slate-400 font-medium">{APPS.length} AI Applications</span>
+                       <NavLink 
+                          to="/deployment-apps"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 transition-colors text-xs font-semibold text-slate-700"
+                        >
+                          <LayoutGrid size={13} />
+                          <span>All Deployment Tools</span>
+                        </NavLink>
+                     </div>
+                     <a 
+                       href="https://deploy-my-app-goog-appl-stores.ai.studio"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="flex items-center justify-between p-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:from-violet-700 hover:to-indigo-700 transition-all shadow-sm group/deploy"
+                     >
+                       <div className="flex items-center gap-2.5">
+                         <div className="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center text-white shrink-0">
+                           <PackageCheck size={16} />
+                         </div>
+                         <div className="flex flex-col text-left">
+                           <span className="text-xs font-bold leading-tight flex items-center gap-1.5">
+                             Deploy My App (Apple & Google Play)
+                             <span className="text-[9px] bg-white/20 px-1.5 py-0.5 rounded-full font-semibold uppercase">Final Deploy</span>
+                           </span>
+                           <span className="text-[10px] text-violet-100 leading-tight">Automated mobile publisher & store dispatch</span>
+                         </div>
+                       </div>
+                       <ExternalLink size={14} className="text-violet-200 group-hover/deploy:text-white group-hover/deploy:translate-x-0.5 transition-all shrink-0" />
+                     </a>
                    </div>
                 </div>
               </div>
+
+              {/* Deployment Apps Top-Level Nav Link */}
+              <NavLink 
+                to="/deployment-apps" 
+                className={({ isActive }) => `text-sm font-medium hover:text-brand-600 transition-colors flex items-center gap-1.5 ${isActive ? 'text-brand-600 font-semibold' : 'text-slate-600'}`}
+              >
+                <LayoutGrid size={15} />
+                <span>Deployment Apps</span>
+              </NavLink>
+
               <NavLink 
                 to="/about" 
                 className={({ isActive }) => `text-sm font-medium hover:text-brand-600 transition-colors ${isActive ? 'text-brand-600' : 'text-slate-600'}`}
@@ -121,7 +157,8 @@ const Layout: React.FC = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-16 px-4 py-6 flex flex-col space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <NavLink to="/" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Home</NavLink>
+            <NavLink to="/" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-1">Home</NavLink>
+            
             <div className="border-l-2 border-slate-100 pl-3 space-y-4">
               {APP_GROUPS.map((group) => {
                 const groupApps = APPS.filter(a => group.appIds.includes(a.id));
@@ -147,20 +184,39 @@ const Layout: React.FC = () => {
                   </div>
                 );
               })}
-              <div className="pt-2 border-t border-slate-100">
+              
+              <div className="pt-2 border-t border-slate-100 space-y-2">
                 <NavLink 
                   to="/deployment-apps" 
                   onClick={closeMenu} 
-                  className="flex items-center gap-2.5 text-xs font-bold text-brand-600"
+                  className="flex items-center gap-2 text-xs font-bold text-brand-600 py-1"
                 >
                   <LayoutGrid size={14} />
-                  Deployment Apps
+                  <span>Deployment & Dev Ecosystem (8 Tools)</span>
                 </NavLink>
+                <a
+                  href="https://deploy-my-app-goog-appl-stores.ai.studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-violet-600 text-white text-xs font-bold"
+                >
+                  <div className="flex items-center gap-2">
+                    <PackageCheck size={16} />
+                    <span>Deploy My App (Apple & Google Play)</span>
+                  </div>
+                  <ExternalLink size={13} />
+                </a>
               </div>
             </div>
-            <NavLink to="/about" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">About</NavLink>
-            <NavLink to="/contact" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2">Contact</NavLink>
-            <NavLink to="/admin" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-2 flex items-center gap-2">
+
+            <NavLink to="/deployment-apps" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-1 flex items-center gap-2">
+              <LayoutGrid size={16} />
+              Deployment Apps
+            </NavLink>
+            <NavLink to="/about" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-1">About</NavLink>
+            <NavLink to="/contact" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-1">Contact</NavLink>
+            <NavLink to="/admin" onClick={closeMenu} className="font-medium text-slate-700 hover:text-brand-600 py-1 flex items-center gap-2">
               <ShieldCheck size={16} />
               Admin Dashboard
             </NavLink>
@@ -201,7 +257,17 @@ const Layout: React.FC = () => {
               {APPS.map(app => (
                 <li key={app.id}><NavLink to={`/app/${app.id}`} className="hover:text-white transition-colors">{app.name}</NavLink></li>
               ))}
-              <li className="pt-2"><NavLink to="/deployment-apps" className="text-brand-500 font-bold hover:text-brand-400">Deployment Tools</NavLink></li>
+              <li className="pt-2"><NavLink to="/deployment-apps" className="text-brand-500 font-bold hover:text-brand-400">All Deployment Tools</NavLink></li>
+              <li className="pt-1">
+                <a 
+                  href="https://deploy-my-app-goog-appl-stores.ai.studio" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-violet-400 font-semibold hover:text-violet-300 flex items-center gap-1"
+                >
+                  Deploy My App (Apple & Google) &nearr;
+                </a>
+              </li>
             </ul>
           </div>
           <div>
